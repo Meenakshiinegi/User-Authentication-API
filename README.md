@@ -21,7 +21,7 @@ It ensures secure user registration, login, and access to protected APIs using s
 ### JWT Token-Based Authentication
 - Stateless session management.
 - Token contains encoded user information.
-- Token must be sent in the Authorization header.
+- The JWT Token must be sent in the Authorization header.
 
 ### Secured API Endpoints
 - Protected routes require a valid JWT token.
@@ -112,7 +112,7 @@ Protected endpoint that requires a valid JWT token.
 **Header Required:**
 Authorization: Bearer <JWT_TOKEN>
 
-**Status:** 200 OK# API Endpoints
+**Status:** 200 OK
 
 
 
@@ -127,7 +127,8 @@ The authentication and authorization process follows a JWT-based stateless mecha
 5. The client stores the token and includes it in the Authorization header for protected requests.
 6. JWTAuthenticationFilter intercepts incoming requests.
 7. The filter extracts and validates the token.
-8. If valid, the user is authenticated and access to secured endpoints is granted.
+8. If the token is valid, the user is authenticated and access to secured endpoints is granted.
 9. If token is invalid or missing, access is denied with 401 Unauthorized.
+10. If the token is expired, the client must log in again to obtain a new JWT token.
 
 
