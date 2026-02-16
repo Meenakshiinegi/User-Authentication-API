@@ -1,23 +1,66 @@
 # User Authentication API
 
-User Authentication API is a backend RESTful application built using Spring Boot that provides secure user authentication and authorization using JSON Web Tokens (JWT). The project demonstrates standard backend security practices such as token-based authentication, stateless sessions, and protected API endpoints.
+A secure and scalable RESTful authentication system built using Spring Boot and JSON Web Tokens (JWT).  
+This project demonstrates modern backend security practices including token-based authentication, password encryption, and role-based authorization.
 
-This API can be used as a base for real-world applications that require secure login, role-based access, and user identity validation.
+---
 
-# Features
-- User login with username and password
-- JWT generation on successful authentication
-- Secure access to protected REST endpoints
-- Stateless authentication using JWT
-- Spring Security integration
-- Custom authentication filter and entry point
+##  Project Overview
 
-## Tech Stack
-- Java  
-- Spring Boot  
-- Spring Security  
-- JWT (JSON Web Token)  
-- Maven  
+This backend application provides a complete authentication mechanism for web applications.  
+It ensures secure user registration, login, and access to protected APIs using stateless authentication.
+
+##  Core Features
+
+### User Registration
+- New users can create accounts.
+- Passwords are encrypted using BCrypt before storing in the database.
+- Validation ensures secure credential handling.
+
+### User Login
+- Users authenticate using username and password.
+- Credentials are validated using Spring Security.
+- A signed JWT token is generated upon successful authentication.
+
+### JWT Token-Based Authentication
+- Stateless session management.
+- Token contains encoded user information.
+- Token must be sent in the Authorization header.
+
+### Secured API Endpoints
+- Protected routes require a valid JWT token.
+- Unauthorized access returns proper HTTP error responses.
+
+### Role-Based Access Control (RBAC)
+- Supports role-based access (e.g., USER / ADMIN).
+- Access to endpoints can be restricted based on user roles.
+
+### Custom JWT Filter
+- Intercepts incoming requests.
+- Extracts and validates JWT.
+- Sets authentication in SecurityContext.
+
+### Exception Handling
+- Custom authentication entry point for handling unauthorized requests.
+- Proper HTTP status responses (401, 403).
+
+## 🛠️ Technologies Used
+
+### Backend
+- Java 11
+- Spring Boot
+- Spring Security
+- JWT (JSON Web Tokens)
+
+### Database & Persistence
+- MySQL
+- Spring Data JPA
+- Hibernate ORM
+
+### Build & Tools
+- Maven
+- Postman (API testing)
+- Git & GitHub
 
 # API Endpoints
 
