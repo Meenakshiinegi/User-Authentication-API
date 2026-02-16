@@ -1,13 +1,8 @@
 # User Authentication API
 
-A secure and scalable RESTful authentication system built using Spring Boot and JSON Web Tokens (JWT).  
-This project demonstrates modern backend security practices including token-based authentication, password encryption, and role-based authorization.
-
----
-
 ##  Project Overview
-
-This backend application provides a complete authentication mechanism for web applications.  
+A secure and scalable RESTful authentication system built using Spring Boot and JSON Web Tokens (JWT).  
+This project demonstrates modern backend security practices including token-based authentication, password encryption, and role-based authorization
 It ensures secure user registration, login, and access to protected APIs using stateless authentication.
 
 ##  Core Features
@@ -44,7 +39,7 @@ It ensures secure user registration, login, and access to protected APIs using s
 - Custom authentication entry point for handling unauthorized requests.
 - Proper HTTP status responses (401, 403).
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 ### Backend
 - Java 11
@@ -62,23 +57,72 @@ It ensures secure user registration, login, and access to protected APIs using s
 - Postman (API testing)
 - Git & GitHub
 
-# API Endpoints
+## Controllers Documentation
 
-# Authentication
- **POST** `/auth/login`  
-  Authenticates user credentials and returns a JWT token.
+This section provides a concise overview of the REST controllers and their exposed endpoints.
 
-# Protected APIs
- **GET** `/home/user`  
-  Returns user data (requires valid JWT token).
+---
 
- **GET** `/home/current-user`  
-  Returns the currently authenticated user's username.
+## AuthController
 
-# Security Flow
-1. User sends login request with credentials.
-2. Server validates credentials.
-3. JWT token is generated and returned to the client.
-4. Client sends the token in the `Authorization` header for protected requests.
-5. JWT filter validates the token and allows access to secured endpoints.
+**Base Path:** /auth
+
+### POST /auth/signup
+Registers a new user and returns a JWT token on successful registration.
+
+**Request Body:**
+{
+  "email": "user@example.com",
+  "fullName": "User Name",
+  "role": "USER",
+  "password": "your_password"
+}
+
+**Response:** JWT token with role  
+**Status:** 201 Created
+
+---
+
+### POST /auth/signin
+Authenticates an existing user and returns a JWT token.
+
+**Request Body:**
+{
+  "email": "user@example.com",
+  "password": "your_password"
+}
+
+**Response:** JWT token with role  
+**Status:** 200 OK
+
+---
+
+## HomeController
+
+**Base Path:** /
+
+### GET /home
+Protected endpoint that requires a valid JWT token.
+
+**Header Required:**
+Authorization: Bearer <JWT_TOKEN>
+
+**Status:** 200 OK# API Endpoints
+
+
+
+## Security Flow
+
+The authentication and authorization process follows a JWT-based stateless mechanism.
+
+1. User sends a login request with credentials (email & password).
+2. Spring Security validates the credentials using AuthenticationManager.
+3. If credentials are valid, a signed JWT token is generated.
+4. The JWT token is returned to the client in the response.
+5. The client stores the token and includes it in the Authorization header for protected requests.
+6. JWTAuthenticationFilter intercepts incoming requests.
+7. The filter extracts and validates the token.
+8. If valid, the user is authenticated and access to secured endpoints is granted.
+9. If token is invalid or missing, access is denied with 401 Unauthorized.
+
 
