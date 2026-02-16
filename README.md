@@ -79,7 +79,7 @@ Registers a new user and returns a JWT token on successful registration.
   "role": "USER",
   "password": "your_password"
 }
-```
+````
 
 **Response:** JWT token with role  
 **Status:** 201 Created
