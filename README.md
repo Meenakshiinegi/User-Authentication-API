@@ -1,6 +1,8 @@
 # User Authentication API
 
-##  Project Overview A secure and scalable RESTful authentication system built using Spring Boot and JSON Web Tokens (JWT).  
+##  Project Overview
+
+A secure and scalable RESTful authentication system built using Spring Boot and JSON Web Tokens (JWT).  
 This project demonstrates modern backend security practices including token-based authentication, password encryption, and role-based authorization
 It ensures secure user registration, login, and access to protected APIs using stateless authentication.
 
@@ -70,12 +72,14 @@ This section provides a concise overview of the REST controllers and their expos
 Registers a new user and returns a JWT token on successful registration.
 
 **Request Body:**
+````json
 {
   "email": "user@example.com",
   "fullName": "User Name",
   "role": "USER",
   "password": "your_password"
 }
+```
 
 **Response:** JWT token with role  
 **Status:** 201 Created
@@ -86,10 +90,12 @@ Registers a new user and returns a JWT token on successful registration.
 Authenticates an existing user and returns a JWT token.
 
 **Request Body:**
+```json
 {
   "email": "user@example.com",
   "password": "your_password"
 }
+```
 
 **Response:** JWT token with role  
 **Status:** 200 OK
