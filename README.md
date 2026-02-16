@@ -1,7 +1,6 @@
 # User Authentication API
 
-##  Project Overview
-A secure and scalable RESTful authentication system built using Spring Boot and JSON Web Tokens (JWT).  
+##  Project Overview A secure and scalable RESTful authentication system built using Spring Boot and JSON Web Tokens (JWT).  
 This project demonstrates modern backend security practices including token-based authentication, password encryption, and role-based authorization
 It ensures secure user registration, login, and access to protected APIs using stateless authentication.
 
